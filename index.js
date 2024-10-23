@@ -9,9 +9,10 @@ const ejs = require('ejs');
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, 'pages')));
+app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
-app.set('pages', path.join(__dirname, 'pages'));
+app.set('views', path.join(__dirname, 'views'));
+app.use('/img', express.static(path.join(__dirname, '/img')));
 
 
 app.use('/product', crudProduct);

@@ -23,10 +23,14 @@
                 <% crudProduct.forEach(product => { %>
                 <tr>
                     <td><%= product.libelle_produit %> </td>
-                    <td><%= product.prix %> </td>
+                    <td><%= product.prix %>€</td>
                     <td><%= product.description %> </td>
                     <td><%= product.libelle_categorie %> </td>
-                    <td><img src="./img/<%= product.image %>"> </td>
+                    <td><img src="<%= product.image %>"> </td>
+                    <td>
+                        <a href="/product/getProduct/<%= product.id_produit %> ">modify</a>
+                        <a href="/product/deleteProduct/<%= product.id_produit %> ">delete</a>
+                    </td>
                 </tr>
                 <% }) %>
             </tbody>

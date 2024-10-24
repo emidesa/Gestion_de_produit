@@ -36,4 +36,22 @@ router.get('/deleteProduct/:id', (req, res) => {
     });
 });
 
+router.get('/getCategory', (req, res) => {
+    const selectCategories = "SELECT * FROM categorie;";
+    db.query(selectCategories, (error, result) => {
+         if(error) throw error;
+         res.render('addPage', {categories: result});
+    });
+});
+
+router.post('/addProduct', (req, res) => {
+    const { libelle, prix, description, image, id_categorie } = req.body;
+
+    const insertProduct = "INSERT INTO produit (libelle, prix, description, image, id_categorie) VALUES (?, ?, ?, ?, ?);";
+    db.query(insertProduct, [libelle, prix, description, image, id_categorie], (error, result) => {
+        if (error) throw error;
+        res.redirect('/product/allProduct');
+    });
+});
+
 module.exports = router;

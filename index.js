@@ -4,6 +4,7 @@ const path = require('path');
 const crudProduct = require('./routes/crudProduct');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const crudUser = require('./routes/crudUser');
 
 
 
@@ -16,6 +17,7 @@ app.use('/img', express.static(path.join(__dirname, '/img')));
 
 
 app.use('/product', crudProduct);
+app.use('/user', crudUser);
 
 
 
